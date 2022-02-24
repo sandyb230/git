@@ -1,19 +1,16 @@
-
-set --`who`
-u= $1
-t= $4
-set --`echo $t | tr ":" ""`
+set -- `who`
+user=$1
+set -- `echo $4 |tr ":" " "`
 h=$1
-echo "user loged in :$h"
 if [ $h -ge 4 ] && [ $h -lt 12 ]
 then
-echo "good morning:$u"
-elif [ sh -ge 4 ] && [ $h -lt 16 ]
+echo "Good Morning Mr./Mrs.$user"
+elif [ $h -ge 12] && [ $h -lt 16 ]
 then
-echo "good Afternoon;$u"
-elif [ $ -ge 16 ] && [ $h -t 19 ]
+echo "good Afternoon Mr./Mrs. $user"
+elif [ $h -ge 16 ] && [ $h -lt 19 ]
 then
-echo "good Evening:$u"
+echo "good Evening Mr./Mrs. $user"
 else 
-echo "good night:$u"
+echo "good night Mr./Mrs. $user"
 fi
