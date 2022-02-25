@@ -1,3 +1,4 @@
+
 set -- `who`
 user=$1
 set -- `echo $4 |tr ":" " "`
