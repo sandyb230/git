@@ -1,64 +1,38 @@
-
-//infix to postfix
 #include<stdio.h>
-#include<ctype.h>
-char infix[30],postfix[30];
-int top=-1;
-char stack[30];
-void push(char ch)
+#include<stdlib.h>
+int n;
+void selectionsort(int a[])
 {
-stack[++top]=ch;
+int i,loc,j,temp;
+for(i=0;i<n-1;i++)
+{
+loc=i;
+for(j=i+1;j<n;j++)
+{
+if(a[loc]<a[j])
+{
+loc=j;
 }
-char pop()
-{
-return stack[top--];
 }
-int precedence(int x)
+if(loc!=i)
 {
-if(x=='(')
+temp=a[i];
+a[i]=a[loc];
+a[loc]=temp;
+}
+}
+}
+int main()
+{
+int a[10],i;
+printf("enter avalue of n");
+scanf("%d",&n);
+printf("enter a element");
+for(i=0;i<n;i++)
+scanf("%d",&a[i]);
+selectionsort (a);
+printf("seleced order");
+for(i=0;i<n;i++)
+printf("%d",a[i]);
 return 0;
-if(x=='+'||x=='-')
-return 1;
-if(x=='*'||x=='/')
-return 2;
-if(x=='^')
-return 3;
-return 0;
 }
-void infixTopostfix()
-{
-int i=0,k=0;
-char ch;
-while((ch=infix[i++])!='\0')
-{
-if(ch=='(')
-push(ch);
-else if(isalnum(ch))
-postfix[k++]=ch;
-else if(ch==')')
-{
-while(stack[top]!='(')
-postfix[k++]=pop();
-ch=pop();
-}
-else
-{
-while(precedence(stack[top])>=precedence(ch))
-postfix[k++]=pop();
-push(ch);
-}
-}
-while(stack[top]!='$')
-postfix[k++]=pop();
-postfix[k];'\0';
-}
-void main()
-{
-printf("Enter the infix expression");
-scanf("%s",infix);
-push('$');
-infixTopostfix();
-printf("enter the postfix expression is %s",postfix);
-}
-
-
