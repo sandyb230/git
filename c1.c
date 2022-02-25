@@ -1,22 +1,32 @@
 #include<stdio.h>
-#include<stdlib.h>
-void main()
+int n;
+void BubbleShort(a[])
 {
-int a[10],i,n,key;
-printf("enter avalue of n");
+int i,j,temp;
+for(i=0;i<n;i++)
+{
+for(j=0;i<n-i-1;j++)
+{
+if(a[j]>a[j+1])
+{
+temp= a[j];
+a[j]= a[j+1];
+a[j+1]=temp;
+}
+}
+}
+}
+int main()
+{
+int a[10],i;
+printf("enter a value of n");
 scanf("%d",&n);
+printf("Enter a element");
 for(i=0;i<n;i++)
 scanf("%d",&a[i]);
-printf("%d",a[i]);
-printf("enter the item to be searched");
-scanf("%d",&key);
+BubbleSort(a);
+print("Sorted order");
 for(i=0;i<n;i++)
-{
-if(key==a[i])
-{
-printf("item found at location %d",i);
-exit(0);
-}
-}
-printf("item not found at location");
+printf("%d",a[i]);
+return 0;
 }
