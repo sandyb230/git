@@ -1,10 +1,9 @@
-#write a shell script that accepts filename as argument and display its creation time if file
-#exit and if doesnot send output error message.
-filename=$1
-if [ -e $filename ]
-then
-set -- `ls -ld $filename`
-echo "creation time of  $filename is $6 $7 $8"
+date=`date +%d`
+date=`expr $date + 0`
+line=`cal | tr -d "[\010][\137]" | grep -wn $date | head -c 1`
+if [ $date -gt 9 ]
+then 
+	cal | tr -d "[\137][\010]" | sed "$line s/$date/**/"
 else
-echo "file doesnot exit"
+	cal | tr -d "[\137][\010]"  | sed "$line s/$date/*/"
 fi
