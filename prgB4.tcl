@@ -68,35 +68,23 @@ $udp0 set dst_port_ 0
 set rcvr1 [new Agent/LossMonitor];
 
 $ns attach-agent $n1 $rcvr1
-$ns at 1.9 "$n1 join-group $rcvr1 $group"
+$ns at 1.5 "$n1 join-group $rcvr1 $group"
 
 set rcvr2 [new Agent/LossMonitor];
 $ns attach-agent $n2 $rcvr2
-$ns at 1.55 "$n2  join-group $rcvr2 $group"
+$ns at 1.6 "$n2  join-group $rcvr2 $group"
 
 set rcvr3 [new Agent/LossMonitor];
 $ns attach-agent $n3 $rcvr3
-$ns at 1.50 "$n2 join-group $rcvr3 $group"
+$ns at 1.7 "$n3 join-group $rcvr3 $group"
 
 set rcvr4 [new Agent/LossMonitor];
 $ns attach-agent $n4 $rcvr4
-$ns at 3.3 "$n3  join-group $rcvr4 $group"
-
-set rcvr3 [new Agent/LossMonitor];
-$ns attach-agent $n3 $rcvr3
-$ns at 3.9 "$n3 leave-group $rcvr3 $group"
-
-set rcvr3 [new Agent/LossMonitor];
-$ns attach-agent $n3 $rcvr3
-$ns at 4.0 "$n3 leave-group $rcvr3 $group"
+$ns at 0.3 "$n4  join-group $rcvr4 $group"
 
 set rcvr4 [new Agent/LossMonitor];
 $ns attach-agent $n4 $rcvr4
-$ns at 4.13 "$n4 leave-group $rcvr4 $group"
-
-set rcvr4 [new Agent/LossMonitor];
-$ns attach-agent $n4 $rcvr4
-$ns at 4.43 "$n4 leave-group $rcvr4 $group"
+$ns at 3.9 "$n4 leave-group $rcvr4 $group"
 
 $cbr0 set packetSize_ 1000
 $cbr0 set rate_ 1.0Mb
